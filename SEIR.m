@@ -6,6 +6,7 @@ AT = [];
 BT = [];
 SS = [];
 
+%% Loop over all exogenous infection magnitudes f, if relevant
 for FF = 1:11
 f = (FF-1)*0.001;
 
@@ -34,7 +35,7 @@ for t=2:tend
     S(t) = S(t-1) - (beta*I(t-1)*S(t-1))*dt*d/n;
     E(t) = E(t-1) + beta*I(t-1)*S(t-1)*dt*d/n - delta*E(t-1)*dt;
     I(t) = I(t-1) + delta*E(t-1)*dt - gamma*I(t-1)*dt;
-    if t == 70 %|| t == 220 || t == 370 || t == 520 || t == 670 || t == 820
+    if 0 %Uncomment for exogenous infections - t == 70 %|| t == 220 || t == 370 || t == 520 || t == 670 || t == 820
         I(t) = I(t) + S(t-1)*f;
         S(t) = S(t) - S(t-1)*f;
         totalI(t) = totalI(t-1) + delta*E(t-1)*dt + S(t-1)*f;
@@ -48,6 +49,9 @@ end
 AT(FF)=(totalI(700)-reftotal(700))-(totalI(69)-reftotal(69));
 BT(FF)=(totalI(70)-reftotal(70))-(totalI(69)-reftotal(69));
 end
+
+% AT stores all dI values
+% BT stores all f x S values
 
 %figure;
 %hold on; plot([0:0.1:1],AT/n,'k');plot([0:0.1:1],BT/n,'b')

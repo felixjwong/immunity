@@ -12,7 +12,7 @@
 <br />
 <p align="center">
 
-  <h3 align="center">Evidence that coronavirus superspreading is fat-tailed</h3>
+  <h3 align="center">Herd immunity and sustained SARS-CoV-2 transmission</h3>
 
   <p align="center">
     Supporting code for the paper
@@ -37,86 +37,28 @@
 <!-- ABOUT THE PROJECT -->
 ## About the Code
 
-The code in this repository allows for repeat and independent analysis of the one described in the paper "Evidence that coronavirus superspreading is fat-tailed", by Felix Wong and James J. Collins. The code requires MATLAB 2019b or later to run. 
+The code in this repository allows for repeat and independent analysis of the one described in the paper "Herd immunity and sustained SARS-CoV-2 transmission", by Felix Wong and James J. Collins. The code requires MATLAB 2019b or later to run. 
 
 <!-- GETTING STARTED -->
 ## Running the Code
 
-### Data files
-
-In the folder "SSEs", three different datasets are provided as detailed in the main text. Load any single one of them before proceeding with the analysis code below.
-
-### Data analysis code
-
-There are a total of seven files included in the main folder:
-
-* sspreader.m
-<p>
-This file is the main analysis script. It loads all the data and generates most figures and analyses shown in Fig. 1 of the main text.
-</p>
-
-* sspreader_robustness.m
-<p>
-This file performs the robustness check shown in Fig. 1H of the main text.
-</p>
-
-* merging_imputation.m
-<p>
-This file performs the robustness check shown in Fig. 1I of the main text.
-</p>
-
-* cross_comparison.m
-<p>
-This file plots the summary statistics shown in Fig. 1J,K of the main text.
-</p>
-
-* hillestimator.m
-<p>
-Auxiliary script for computing the Hill estimator. 
-</p>
-
-* pickandestimator.m
-<p>
-Auxiliary script for computing the Pickands estimator. 
-</p>
-
-* DedHestimator.m
-<p>
-Auxiliary script for computing the Dekkers-Einmahl-de Haan estimator. 
-</p>
-
-* polyparci.m
-<p>
-Auxiliary script for estimating polynomial fit confidence intervals.
-</p>
-
-* frechetmodeling.m
-<p>
-Script for modeling the maxima of samples of a Fr&eacute;chet distribution.
-</p>
-
-<p>
-<b>Please note:</b> Datasets S1 and S2 of the paper contains more details of, and references for, superspreading events.
-</p>
-
 
 ### Network model of transmission code
 
-In the folder "network", there are MATLAB scripts for reproducing the network models of transmissions detailed in the main text.
+In the main folder, there are MATLAB scripts for reproducing the network models of transmissions detailed in the main text.
 
-* graph_model.m
+* no_exogenous_infections.m
 <p>
-This file is the main simulation script. It generates BA or WS random graphs and runs the simulations shown in Fig. 2B-E of the main text.
+This file is the main simulation script. It generates BA or WS random graphs and runs the SEIR simulation described in the main text. It does not take into account any exogenous infections. (For a complete graph, generate the adjacency matrix using the ones() function.)
 </p>
+
+* exogenous_infection.m
+<p>
+This file is an adaptation of the main simulation script, taking into account any exogenous infections. It assumes that the graph model is already generated and the adjacency matrix is stored in the variable, A. Run this after having run no_exogenous_infections.m to ensure that the graph model is properly stored. To consider the various vaccination strategies presented, uncomment the corresponding lines of code indicated. 
 
 * SEIR.m
 <p>
-This file simulates a well-mixed SEIR model and plots the resultant total infected curve.
-</p>
-
-* graph_statistics.m
-<p>
-This file computes the statistics of graph models (e.g., their mean degrees after thresholding). Run this after graph_model.m has been run. 
+This file simulates a well-mixed SEIR model and plots the resultant total infected curve. There are portions of the code which can account for exogenous infections when uncommented. 
 </p>
 
 * WattsStrogatz.m
@@ -125,32 +67,25 @@ Auxiliary script for generating a WS random graph with specified parameters.
 </p>
 
 <p>
-<b>Please note:</b> Dataset S3 of the paper contains more details regarding simulation parameters.
+<b>Please note:</b> Extended Data Table 1 of the paper contains more details regarding simulation parameters.
 </p>
 
 
 ### Usage
 
-To run the main analysis, simply load any one of the datasets in "SSEs", then run in MATLAB:
+To run the main analysis, simply run in MATLAB:
 ```sh
-sspreader
+no_exogenous_infections.m
 ```
-Most analysis results should appear. To run robustness checks after the main analysis has been executed, run in MATLAB the relevant script, e.g., 
+This will build the graph model as specified, and run the SEIR simulations described. By default, the code is initialized to a BA model with 100 nodes, but one can easily specify the option for changing the number of nodes or the random graph model (BA or WS). After the code above is executed, the graph model adjacency matrix should be stored in a variable, A. This is needed to run the simulations with exogenous infections, which can be executed simply by the following command:  
 ```sh
-sspreader_robustness
+exogenous_infection
 ```
-To model removing the tails and taking the maxima of samples of a Fr&eacute;chet distribution, run in MATLAB:
-```sh
-frechetmodeling
-```
-To model simulations of a network-based model of transmission or a well-mixed SEIR model, run in MATLAB:
-```sh
-graph_model
-```
-or
+Finally, the predictions of a well-mixed SEIR model can be generated by executing directly the following:
 ```sh
 SEIR
 ```
+The script can be changed in the commented regions to model the effects of exogenous infections. 
 
 <!-- CONTACT -->
 ## Contact
