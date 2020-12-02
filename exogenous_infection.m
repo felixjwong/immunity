@@ -47,15 +47,12 @@ allA{1} = A;
 this_A = A;
 deg_dist = sum(A,2);
 
-% Uncomment for superspreader vaccination: 
-%sspreaders = find(deg_dist>10);
-
 % Uncomment for random vaccination
-%sspreaders = randsample(n,n*0.95);
+%vaccinated = randsample(n,n*0.95);
 
 for t = 2:tend
-    % Uncomment for any vaccination: 
-    %S(t-1,sspreaders) = 3; % Superspreaders are removed
+    % Uncomment for random vaccination: 
+    %S(t-1,vaccinated) = 3; % Vaccinated individuals are removed
     exposed = [];
     infected = [];
     recovered = [];

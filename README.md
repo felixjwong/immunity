@@ -54,7 +54,7 @@ This file is the main simulation script. It generates BA or WS random graphs and
 
 * exogenous_infection.m
 <p>
-This file is an adaptation of the main simulation script, taking into account any exogenous infections. It assumes that the graph model is already generated and the adjacency matrix is stored in the variable, <i>A</i>. Run this after having run no_exogenous_infections.m to ensure that the graph model is properly stored. To consider the various vaccination strategies presented, uncomment the corresponding lines of code indicated. 
+This file is an adaptation of the main simulation script, taking into account any exogenous infections. It assumes that the graph model is already generated and the adjacency matrix is stored in the variable, <i>A</i>. Run this after having run no_exogenous_infections.m to ensure that the graph model is properly stored. To consider the cases of random vaccination presented, uncomment the corresponding lines of code indicated. 
 
 * SEIR.m
 <p>
