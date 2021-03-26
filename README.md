@@ -12,7 +12,7 @@
 <br />
 <p align="center">
 
-  <h3 align="center">Modeling expectations for herd immunity and sustained SARS-CoV-2 transmission</h3>
+  <h3 align="center">Modeling expectations for herd immunity and sustained SARS-CoV-2 transmission</h3> 
 
   <p align="center">
     Supporting code for the paper
