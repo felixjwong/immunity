@@ -12,7 +12,7 @@
 <br />
 <p align="center">
 
-  <h3 align="center">Modeling expectations for herd immunity and sustained SARS-CoV-2 transmission</h3> 
+  <h3 align="center">Resetting Expectations for Herd Immunity and Continued SARS-CoV-2 Transmission</h3> 
 
   <p align="center">
     Supporting code for the paper
@@ -37,7 +37,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About the Code
 
-The code in this repository allows for repeat and independent analysis of the one described in the paper "Modeling expectations for herd immunity and sustained SARS-CoV-2 transmission", by Felix Wong. The code requires MATLAB 2019b or later to run. 
+The code in this repository allows for repeat and independent analysis of the one described in the paper "Resetting Expectations for Herd Immunity and Continued SARS-CoV-2 Transmission", by Felix Wong and James J. Collins. The code requires MATLAB 2019b or later to run. 
 
 <!-- GETTING STARTED -->
 ## Running the Code
